@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">HomeAround2</string>
+    <string name="title_activity_google_maps">GoogleMapsActivity</string>
+    <string name="my_map_api_key">AIzaSyCTlGqh6XKYahNEBQTYmOi_rMy_AOQgeO0</string>
+
+
+    <string name="InputOfPlace1">HousePlace</string>
+    <string name="InputOfKindOfHouse1">HouseName</string>
+    <string name="InputOfSquareMetres1">SqueredMetres</string>
+    <string name="InputOfCostOfRent1">CostOfRent</string>
+    <string name="InputOfYearConstructed1">YearConstructed</string>
+    <string name="InputOfAddressRoad1">AddressRoadNum</string>
+    <string name="InputOfPostalCode1">PostalCode</string>
+    <string name="InputOfFloor1">Floor</string>
+    <string name="InputOfBedrooms1">Bedrooms</string>
+    <string name="InputOfBathrooms1">Bathrooms</string>
+    <string name="InputOfState1">State</string>
+    <string name="InputOfEnergyClass1">EnergyClass</string>
+    <string name="InputOfAirConditioning1">AirConditioning</string>
+    <string name="InputOfCostOfSharedExpenses1">CostOfSharedExpenses</string>
+    <string name="InputOfHouseShortDescription1">HouseDetails</string>
+    <string name="Αποθήκευση">Αποθήκευση</string>
+    <string name="Είσοδος">Είσοδος</string>
+    <string name="Ονοματεπώνυμο">Ονοματεπώνυμο</string>
+    <string name="ΌνομαΧρήστη">Όνομα Χρήστη</string>
+    <string name="Email">Email</string>
+    <string name="ΑριθμόςΤηλεφώνου">Αριθμός Τηλεφώνου</string>
+    <string name="ΚωδικόςΧρήστη">Κωδικός Χρήστη</string>
+    <string name="ΕπαλήθευσηΚωδικού">Επαλήθευση Κωδικού</string>
+    <string name="Εγγραφή">Εγγραφή</string>
+
+
+</resources>
