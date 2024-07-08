@@ -1,17 +1,19 @@
 package com.example.homearound2.retrofit
 
+//import com.example.homearound2.rentmodel.UserRegistrationInfo
+//import com.example.homearound2.rentmodel.ValidateEmailAddress
 import com.example.homearound2.rentmodel.HouseAddsInfo
 import com.example.homearound2.rentmodel.UniqueEmailAddressValidationResponce
 import com.example.homearound2.rentmodel.UserRegistrationInfo
 import com.example.homearound2.rentmodel.ValidateEmailAddress
-//import com.example.homearound2.rentmodel.UserRegistrationInfo
-//import com.example.homearound2.rentmodel.ValidateEmailAddress
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
+
 //import retrofit2.http.Part
 
 interface HouseAddsInfoAPI {
@@ -20,8 +22,14 @@ interface HouseAddsInfoAPI {
     val allHouses: Call<List<HouseAddsInfo>>
 
     //@GET("/houseaddsinfo/getfromsearch")
-    //fun getallfromfilter(@Query("housePlace") searchText: String): Call<List<HouseAddsInfo>>  // or searchText : TextInputEditText
-    //val allfromfilter: Call<List<HouseAddsInfo>>
+    //fun getallfromfilter(@Query("housePlace") housePlace: String): Call<List<HouseAddsInfo>>  // or searchText : TextInputEditText
+    //val allfromfilter: Call<List<HouseAddsInfo>>interface ApiService {
+    //
+    //    }
+
+
+    @GET("search")
+    suspend fun searchItems(@Query("query") query: String): Response<List<HouseAddsInfo>>
 
     //@GET("/houseaddsinfo/get-housedetails")
     //open fun gethouseDetails(): Call<HouseAddsInfo?>? //get only one

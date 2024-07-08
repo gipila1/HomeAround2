@@ -13,6 +13,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.homearound2.AuthRepository.AuthRepository
 import com.example.homearound2.databinding.ActivityRegistrationBinding
+import com.example.homearound2.rentmodel.ValidateEmailAddress
 import com.example.homearound2.retrofit.HouseAddsInfoAPI
 import com.example.homearound2.retrofit.RetrofitService
 import com.example.homearound2.viewmodel.RegistrationViewModel
@@ -42,14 +43,34 @@ class Registration : AppCompatActivity(), View.OnClickListener, View.OnFocusChan
     }
 
     private fun setupObservers(){   //here we will observe the Livedata
-       mViewModel.getIsLoading().observe(this){
+        mViewModel.getIsLoading().observe(this){
 
-              mBinding.progressBar.isVisible = it  //when it is loading we see the progress bar and then hidden automatically
+            mBinding.progressBar.isVisible = it  //when it is loading we see the progress bar and then hidden automatically
+        }
 
-       }
+        mViewModel.getIsUniqueEmail().observe(this){ //we will check if it is a unique password
+            if(validateEmail(shouldUpdateView = false)){
+                if(it){
+                    mBinding.Email.apply {
+                        if (isErrorEnabled) isErrorEnabled = false //if the email is unique
+                        setStartIconDrawable(R.drawable.baseline_check_circle_24)
+                        setStartIconTintList(ColorStateList.valueOf(Color.GREEN))
+                    }
+                }else{
+                    mBinding.Email.apply {  //if the email is not unique
+                        if(startIconDrawable != null) startIconDrawable = null
+                        isErrorEnabled = true
+                        error = "Email is already taken"
+
+                    }
+                }
+            }
+
+        }
+
         mViewModel.getErrorMessage().observe(this){
           //fullName, email, code
-          //we create an arry containig the keys above
+          //we create an array containing the keys above
             val formErrorKeys= arrayOf("InputOfUserName", "InputOfEmail", "InputOfCode")
             val message = StringBuilder() //we create a loop in order to project with if..else the differrent kind of errors messages
             it.map { entry ->
@@ -80,9 +101,14 @@ class Registration : AppCompatActivity(), View.OnClickListener, View.OnFocusChan
                 }else{   //else it will be displayed an error
                     message.append(entry.value).append("/n")
                 }
-                if(message.isNotEmpty()){
+                if(message.isNotEmpty()){  //we check if there is no empty message
                     AlertDialog.Builder(this)
-                       // .setIcon()
+                       .setIcon(R.drawable.info_24)
+                        .setTitle("INFORMATION")
+                        .setMessage(message)
+                        .setPositiveButton("OK"){dialog, _ -> dialog!!.dismiss()}
+                        .show()
+
                 }
             }
         }
@@ -107,7 +133,7 @@ class Registration : AppCompatActivity(), View.OnClickListener, View.OnFocusChan
         return errorMessage == null
     }
 
-    private fun validateEmail(): Boolean{
+    private fun validateEmail(shouldUpdateView: Boolean = true): Boolean{  //we insert a parameter in order to update the view so as not to be displayed any message in the input form
         var errorMessage: String? = null
         val value: String = mBinding.InputOfEmail.text.toString()
         if (value.isEmpty()){
@@ -115,7 +141,7 @@ class Registration : AppCompatActivity(), View.OnClickListener, View.OnFocusChan
         } else if(!Patterns.EMAIL_ADDRESS.matcher(value).matches()){
             errorMessage = "To email δεν ειναι σωστό"
         }
-        if(errorMessage != null){
+        if(errorMessage != null && shouldUpdateView){
             mBinding.Email.apply{
                 isErrorEnabled = true
                 error=errorMessage
@@ -196,9 +222,9 @@ class Registration : AppCompatActivity(), View.OnClickListener, View.OnFocusChan
                             mBinding.Email.isErrorEnabled = false
                         }
                     }else{
-                        if(validateEmail()){
-                            //validation is needed for the uniqueness of email
-
+                        if(validateEmail()){ //validation is needed for the uniqueness of email
+                            mViewModel.validateEmailAddress(ValidateEmailAddress(mBinding.InputOfEmail.text!!.toString()))
+                            //we take the input foe validation
                         }
 
                     }

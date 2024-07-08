@@ -1,9 +1,11 @@
 package com.example.homearound2.rentmodel
 
-import android.media.Image
 import android.os.Parcel
 import android.os.Parcelable
 
+
+private val Parcel.userName: Unit
+    get() {}
 
 class HouseAddsInfo() : Parcelable {
 
@@ -23,6 +25,10 @@ class HouseAddsInfo() : Parcelable {
     var energyClass: String? = null
     var airConditioning: String? = null
     var costOfSharedExpenses: Double = 0.00
+    var rentOrSell: String? = null
+    var dateleaving: String? = null
+    //var userName: String? = null
+    var costOfSale: Int = 0
     //var image: Int = 0
 
     constructor(parcel: Parcel) : this() {
@@ -42,20 +48,23 @@ class HouseAddsInfo() : Parcelable {
         energyClass = parcel.readString()!!
         airConditioning = parcel.readString()!!
         costOfSharedExpenses = parcel.readDouble()
+        rentOrSell = parcel.readString()!!
+        dateleaving = parcel.readString()!!
+        costOfSale = parcel.readInt()
+        //userName = parcel.
         //image = parcel.readInt()
     }
 
-    fun getid()=id
-    fun setid(value: Int) {
+    /*fun getIid()=id
+    fun setId(value: Int) {
         id=value
-    }
+    }*/
     fun gethouseName()=houseName
-    fun sethouseName(value: String) {
+    fun sethouseName(value: String?) {
         houseName=value
     }
-
     fun gethousePlace()=housePlace
-    fun sethousePlace(value: String) {
+    fun sethousePlace(value: String?) {
         housePlace=value
     }
     fun getsqueredMetres()=squeredMetres
@@ -66,12 +75,13 @@ class HouseAddsInfo() : Parcelable {
     fun setcostOfRent(value: Int) {
         costOfRent=value
     }
+
     fun gethouseDetails()=houseDetails
-    fun sethouseDetails(value: String) {
+    fun sethouseDetails(value: String?) {
         houseDetails=value
     }
     fun getfloor()=floor
-    fun setfloor(value: String) {
+    fun setfloor(value: String?) {
         floor=value
     }
     fun getyearConstructed()=yearConstructed
@@ -79,7 +89,7 @@ class HouseAddsInfo() : Parcelable {
         yearConstructed=value
     }
     fun getaddressRoadNum()=addressRoadNum
-    fun setaddressRoadNum(value: String) {
+    fun setaddressRoadNum(value: String?) {
         addressRoadNum=value
     }
     fun getpostalCode()=postalCode
@@ -95,21 +105,34 @@ class HouseAddsInfo() : Parcelable {
         bathrooms=value
     }
     fun getstate()=state
-    fun setstate(value: String) {
+    fun setstate(value: String?) {
         state=value
     }
     fun getenergyClass()=energyClass
-    fun setenergyClass(value: String) {
+    fun setenergyClass(value: String?) {
         energyClass=value
     }
     fun getairConditioning()=airConditioning
-    fun setairConditioning(value: String) {
+    fun setairConditioning(value: String?) {
         airConditioning=value
     }
     fun getcostOfSharedExpenses()=costOfSharedExpenses
-    fun setcostOfSharedExpenses(value: Double) {
-        costOfSharedExpenses=value
+    fun setcostOfSharedExpenses (value: Double) {
+        costOfSharedExpenses =value
     }
+    fun getrentOrSell()=rentOrSell
+    fun setrentOrSell(value: String?) {
+        rentOrSell=value
+    }
+    fun getdateleaving()=dateleaving
+    fun setdateleaving(value: String?) {
+        dateleaving=value
+    }
+    fun getcostOfSale()=costOfSale
+    fun setcostOfSale(value: Int) {
+        costOfSale=value
+    }
+
     //fun getimages()=image
     //fun setimages(value: Int) {
     //    image=value
@@ -133,134 +156,13 @@ class HouseAddsInfo() : Parcelable {
                 ", Ενεργειακή Κλάση='" + energyClass + '\'' +
                 ", Kλιματισμός='" + airConditioning + '\'' +
                 ", Κοινόχρηστα (αν υπάρχουν μ.ο. κόστους)='" + costOfSharedExpenses + '\'' +
+                ", Ενοικίαση ή Πώληση='" + rentOrSell + '\'' +
+                ", Ημ. Αποχώρησης='" + dateleaving + '\'' +
+                ", Τιμή πώλησης='" + costOfSale + '\'' +
                 //", Εικόνες='" + image + '\'' +
                 '}'
     }
-            /*fun getId(): Int {
-        return id
 
-
-    fun setId(id: Int) {
-        this.id = id
-
-
-    fun getHouseName(): String? {
-        return houseName
-    }
-
-    fun setHouseName(houseName: String) {
-        this.houseName = houseName
-    }
-
-    fun getHousePlace(): String? {
-        return housePlace
-    }
-
-    fun setHousePlace(housePlace: String) {
-        this.housePlace = housePlace
-    }
-
-    fun getSqueredMetres(): Double {
-        return squeredMetres
-    }
-
-    fun setSqueredMetres(squeredMetres: Double) {
-        this.squeredMetres = squeredMetres
-    }
-
-    fun getCostOfRent(): Int {
-        return costOfRent
-    }
-
-    fun setCostOfRent(costOfRent: Int) {
-        this.costOfRent = costOfRent
-    }
-
-    fun getHouseDetails(): String? {
-        return houseDetails
-    }
-
-    fun setHouseDetails(houseDetails: String) {
-        this.houseDetails = houseDetails
-    }
-
-    fun getFloor(): String? {
-        return floor
-    }
-
-    fun setFloor(floor: String) {
-        this.floor = floor
-    }
-
-    fun getYearConstructed(): Int {
-        return yearConstructed
-    }
-
-    fun setYearConstructed(yearConstructed: Int) {
-        this.yearConstructed = yearConstructed
-    }
-
-    fun getAddressRoadNum(): String? {
-        return addressRoadNum
-    }
-
-    fun setAddressRoadNum(addressRoadNum: String) {
-        this.addressRoadNum = addressRoadNum
-    }
-
-    fun getPostalCode(): Int {
-        return postalCode
-    }
-
-    fun setPostalCode(postalCode: Int) {
-        this.postalCode = postalCode
-    }
-    fun getBedrooms(): Int {
-        return bedrooms
-    }
-
-    fun setBedrooms(bedrooms: Int) {
-        this.bedrooms = bedrooms
-    }
-    fun getBathrooms(): Int {
-        return bathrooms
-    }
-
-    fun setBathrooms(bathrooms: Int) {
-        this.bathrooms = bathrooms
-    }
-
-    fun getState(): String? {
-        return state
-    }
-
-    fun setState(state: String) {
-        this.state = state
-    }
-
-    fun getEnergyClass(): String? {
-        return energyClass
-    }
-
-    fun setEnergyClass(energyClass: String) {
-        this.energyClass = energyClass
-    }
-
-    fun getAirConditioning(): String? {
-        return airConditioning
-    }
-
-    fun setAirConditioning(airConditioning: String) {
-        this.airConditioning = airConditioning
-    }
-
-    fun getCostOfSharedExpenses(): Double {
-        return costOfSharedExpenses
-    }
-
-    fun setCostOfSharedExpenses(costOfSharedExpenses: Double) {
-        this.costOfSharedExpenses = costOfSharedExpenses
-    }*/
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
         parcel.writeString(houseName)
@@ -278,6 +180,10 @@ class HouseAddsInfo() : Parcelable {
         parcel.writeString(energyClass)
         parcel.writeString(airConditioning)
         parcel.writeDouble(costOfSharedExpenses)
+        parcel.writeString(rentOrSell)
+        parcel.writeString(dateleaving)
+        parcel.writeInt(costOfSale)
+
         //parcel.writeInt(image)
     }
 

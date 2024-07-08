@@ -14,7 +14,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="131dp">
+        android:layout_height="160dp">
 
         <ImageView
             android:id="@+id/HouseView"
@@ -31,7 +31,7 @@
             android:id="@+id/HouseTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="Title"
             android:textColor="@android:color/black"
@@ -40,11 +40,12 @@
             app:layout_constraintStart_toEndOf="@+id/HouseView"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <TextView
             android:id="@+id/HousePlaceall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
             android:text="Place"
             android:textColor="@color/material_dynamic_neutral40"
@@ -52,7 +53,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/HouseView"
             app:layout_constraintTop_toBottomOf="@+id/HouseTitle"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.148" />
 
         <TextView
             android:id="@+id/CostOfRentPrice"
@@ -66,13 +67,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/HousePlaceall"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.413" />
+            app:layout_constraintVertical_bias="0.406" />
 
         <TextView
             android:id="@+id/NumberHouseSqueredmetres"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
             android:text="number"
             android:textColor="@color/material_dynamic_neutral40"
@@ -80,8 +81,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/HouseView"
             app:layout_constraintTop_toBottomOf="@+id/HouseTitle"
-            app:layout_constraintVertical_bias="1.0" />
-
+            app:layout_constraintVertical_bias="0.648" />
 
         <TextView
             android:id="@+id/EuroCurrency"
@@ -89,33 +89,34 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:text="€"
-            android:textStyle="bold"
             android:textColor="@color/material_dynamic_neutral40"
             android:textSize="20dp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/CostOfRentPrice"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.413" />
+            app:layout_constraintVertical_bias="0.406" />
 
         <TextView
             android:id="@+id/HouseSqueredmetres"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="42dp"
             android:text="τμ"
             android:textColor="@color/material_dynamic_neutral40"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/NumberHouseSqueredmetres"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintStart_toEndOf="@+id/NumberHouseSqueredmetres" />
+
 
         <TextView
             android:id="@+id/Floor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="40dp"
+            android:text="Text"
             android:textColor="@color/material_dynamic_neutral40"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -126,7 +127,7 @@
             android:layout_width="25dp"
             android:layout_height="27dp"
             android:layout_marginStart="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="40dp"
             android:background="@color/design_default_color_on_primary"
             android:scaleType="fitXY"
             android:src="@drawable/houseicon1"
@@ -139,15 +140,39 @@
             android:id="@+id/YearConstructed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="40dp"
             android:text="number"
             android:textColor="@color/material_dynamic_neutral40"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/YearConStamp" />
 
+        <TextView
+            android:id="@+id/RentOrSell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Ενοικίαση/Πώληση"
+            android:textColor="@color/blue"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/HouseView" />
 
+        <TextView
+            android:id="@+id/LeavingDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="8dp"
+            android:text="Ημ.Αναχώρησης"
+            android:textColor="@color/blue"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/RentOrSell" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

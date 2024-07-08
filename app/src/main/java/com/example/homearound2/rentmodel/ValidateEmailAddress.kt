@@ -8,8 +8,8 @@ class ValidateEmailAddress : Parcelable {
     var email: String? = null
 
 
-    constructor(parcel: Parcel) : this() {
-        email = parcel.readString()!!
+    constructor(parcel: String) : this() {
+            email = parcel//to check if it needs  .readString()!!
 
     }
 
@@ -39,7 +39,7 @@ class ValidateEmailAddress : Parcelable {
 
     companion object CREATOR : Parcelable.Creator<ValidateEmailAddress> {
         override fun createFromParcel(parcel: Parcel): ValidateEmailAddress {
-            return ValidateEmailAddress(parcel)
+            return ValidateEmailAddress(parcel.toString())
         }
 
         override fun newArray(size: Int): Array<ValidateEmailAddress?> {

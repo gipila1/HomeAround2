@@ -1,15 +1,10 @@
 package com.example.homearound2.adapter
 
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.homearound2.DataList1
 import com.example.homearound2.R
-import com.example.homearound2.rentmodel.HouseAddsInfo
 
 class HouseAddsInfoHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView)  {
@@ -23,6 +18,8 @@ class HouseAddsInfoHolder(itemView: View) :
         val housePlacenew: TextView = itemView.findViewById(R.id.HousePlaceall)
         val floorn: TextView = itemView.findViewById(R.id.Floor)
         val yearconstructednum: TextView = itemView.findViewById(R.id.YearConstructed)
+        val rentorselln: TextView = itemView.findViewById(R.id.RentOrSell)
+        val dateleavingn: TextView = itemView.findViewById(R.id.LeavingDate)
 
 
 

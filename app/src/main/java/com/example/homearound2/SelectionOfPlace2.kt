@@ -1,9 +1,9 @@
 package com.example.homearound2
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.Parcelable
-import android.view.View
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +13,7 @@ import com.example.homearound2.adapter.HouseAddsInfoAdapter
 import com.example.homearound2.rentmodel.HouseAddsInfo
 import com.example.homearound2.retrofit.HouseAddsInfojavaAPI
 import com.example.homearound2.retrofit.RetrofitService
+import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,8 +27,9 @@ class SelectionOfPlace2 : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var houselist1: List<HouseAddsInfo>
-    private lateinit var houseAdapter: HouseAddsInfoAdapter
+    public lateinit var houseAdapter: HouseAddsInfoAdapter
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selection_of_place2)
@@ -35,7 +37,7 @@ class SelectionOfPlace2 : AppCompatActivity() {
         lateinit var houseAddsInfoAdapter: HouseAddsInfoAdapter
         lateinit var linearLayoutManager: LinearLayoutManager
         recyclerView = findViewById(R.id.rvPlaceofRent)
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         loadHousesAddsInfo()  //to check load data from server
@@ -43,13 +45,13 @@ class SelectionOfPlace2 : AppCompatActivity() {
 
 
         //var searchindatabase = findViewById<Button>(R.id.SelectPlace)
-        //var etplacesinput = findViewById<TextInputEditText>(R.id.etplacesinput)
-        // var searchhousevar = findViewById<SearchView>(R.id.searchhouse)
+        var etplacesinput = findViewById<TextInputEditText>(R.id.etplacesinput)
+        //var searchhousevar = findViewById<SearchView>(R.id.searchhouse)
         //val findhouseplace = etplacesinput.text.toString()
-        // searchandloadadds(etplacesinput)
-        /* etplacesinput.setOnClickListener {
-            val intent = Intent(this, SelectionOfPlace2::class.java)
-            startActivity(intent)          // for searching
+        //searchandloadadds()
+        //etplacesinput.setOnClickListener {
+        //    val intent = Intent(this, SelectionOfPlace2::class.java)
+        //    startActivity(intent)          // for searching
 
 
 
@@ -58,7 +60,7 @@ class SelectionOfPlace2 : AppCompatActivity() {
            // startActivity(intent)
             // Εδώ να αναζητώ τις κατοικίες προς ενοικίαση της βάσης
 
-        }*/
+        //}
 
 
         /* houselist = ArrayList()
@@ -77,12 +79,14 @@ class SelectionOfPlace2 : AppCompatActivity() {
         /*houseAdapter = HouseAddsInfoAdapter (houselist1)
         recyclerView.adapter = houseAdapter*/
 
+        //houseAdapter=HouseAddsInfoAdapter (houselist1)
 
-        /*houseAdapter.onItemClick = { //for switching to another activity by clicking
+
+        /*houseAdapter.onItemClick = { itemclicked ->//for switching to another activity by clicking
            val intent = Intent (this, HouseDetails:: class.java)
-               intent.putExtra("houselist1",it)  // είναι απαραίτητο;;
+               intent.putExtra("house",itemclicked)  // είναι απαραίτητο;;
                startActivity(intent)
-       }*/
+        }*/
 
 
 
@@ -109,6 +113,7 @@ class SelectionOfPlace2 : AppCompatActivity() {
 
     fun loadHousesAddsInfo() {
         val retrofit = RetrofitService()
+        Log.d("SelectionOfPlace2", "Retrofit works successfully")
         val houseaddsinfoApi = retrofit.retrofit?.create(HouseAddsInfojavaAPI::class.java)
         houseaddsinfoApi?.getallHouses()
             ?.enqueue(object : Callback<List<HouseAddsInfo>> {
@@ -136,35 +141,39 @@ class SelectionOfPlace2 : AppCompatActivity() {
 
     }
 
-    /*fun searchandloadadds(searchText: TextInputEditText){
-        lateinit var houseAddsInfoAdapter: HouseAddsInfoAdapter
+    /*fun searchandloadadds() {
+        //lateinit var houseAddsInfoAdapter: HouseAddsInfoAdapter
         var etplacesinput = findViewById<TextInputEditText>(R.id.etplacesinput)
         var searchhousevar = findViewById<SearchView>(R.id.searchhouse)
 
         val placeinput = etplacesinput.text.toString()
         val retrofit = RetrofitService()
+        val houseaddsinfoApi = retrofit.retrofit?.create(HouseAddsInfojavaAPI::class.java)
         /* var Q : String = "select* from house_adds_info where house_place='$placeinput'"
          val st : Statement? = null
          val rs : ResultSet = st!!.executeQuery(Q)
          println(rs)*/
-        val houseaddsinfoApi = retrofit.retrofit?.create(HouseAddsInfoAPI::class.java)
-        houseaddsinfoApi?.getallfromfilter(searchText = String())
-       /* val requestCall: Call<MutableList<HouseAddsInfo>> = searchhouseaddsApi!!.getallfromfilter(searchText = String())
+        /* val requestCall: Call<MutableList<HouseAddsInfo>> = searchhouseaddsApi!!.getallfromfilter(searchText = String())
         requestCall*/
-            ?.enqueue(object : Callback<MutableList<HouseAddsInfo>> {
+        val filterValue: String = etplacesinput.toString()
 
-                override fun onResponse(call: Call<MutableList<HouseAddsInfo>>, response: Response<MutableList<HouseAddsInfo>?>) {
+        houseaddsinfoApi?.getallfromfilter(filterValue)
+            ?.enqueue(object : Callback<List<HouseAddsInfo>> {
+
+                override fun onResponse(call: Call<List<HouseAddsInfo>>, response: Response<List<HouseAddsInfo>?>) {
                     Toast.makeText(this@SelectionOfPlace2, "Επιτυχής Εμφάνιση!", Toast.LENGTH_SHORT).show()
+                    val data = response.body()
                     //val listsearchedHouses : List<HouseAddsInfo> = response.body()!!
                     //recyclerView.adapter = HouseAddsInfoAdapter(listsearchedHouses)
                     //val houselist1 : List<HouseAddsInfo> = response.body()!!
                     //recyclerView.adapter = HouseAddsInfoAdapter(houselist1)
                    // println(rs)
-                    val  responsebody = response.body()!!.let { populateListView(it) }
+
+                // val  responsebody = response.body()!!.let { populateListView(it) }
 
                 }
 
-                override fun onFailure(call: Call<MutableList<HouseAddsInfo>>, t: Throwable) {
+                override fun onFailure(call: Call<List<HouseAddsInfo>>, t: Throwable) {
                     Toast.makeText(this@SelectionOfPlace2, "Αποτυχία ανάκτησης!!", Toast.LENGTH_SHORT)
                         .show()
                     Logger.getLogger(LeavingSoon::class.java.name)
@@ -236,9 +245,9 @@ class SelectionOfPlace2 : AppCompatActivity() {
             })
 
 
-    }
+    }*/
 
-     public final fun onItemClick1(position: Int): Unit {
+     public fun onItemClick1(position: Int): Unit {
 
             Toast.makeText(this@SelectionOfPlace2, "Ανακτήθηκε!", Toast.LENGTH_SHORT).show()
             val intent = Intent(this@SelectionOfPlace2, HouseDetails::class.java)
@@ -263,9 +272,11 @@ class SelectionOfPlace2 : AppCompatActivity() {
 
 
 
-    }*/
+    }
 
 }
+
+
 
 /*private fun Intent.putExtra(s: String, it: List<HouseAddsInfo>) {  //to check !!!
 

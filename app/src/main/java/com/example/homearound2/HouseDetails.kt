@@ -1,15 +1,12 @@
 package com.example.homearound2
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import com.example.homearound2.databinding.ActivityHouseDetailsBinding
-import com.example.homearound2.databinding.ActivityMainBinding
-import com.example.homearound2.databinding.ActivityRegistrationBinding
+import androidx.appcompat.app.AppCompatActivity
+import com.example.homearound2.databinding.ActivitySelectionOfPlace2Binding
 import com.example.homearound2.rentmodel.HouseAddsInfo
 import com.example.homearound2.retrofit.HouseAddsInfojavaAPI
 import com.example.homearound2.retrofit.RetrofitService
@@ -28,16 +25,16 @@ import java.util.logging.Logger
 class HouseDetails : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap  //  create a variable for Google maps
-    private lateinit var detailsBinding: ActivityHouseDetailsBinding
+    private lateinit var detailsBinding: ActivitySelectionOfPlace2Binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        detailsBinding = ActivityHouseDetailsBinding.inflate(LayoutInflater.from(this))
-
+        detailsBinding = ActivitySelectionOfPlace2Binding.inflate(layoutInflater)
+        setContentView(detailsBinding.root)
         setContentView(R.layout.activity_house_details)
-        val houseList2: List<HouseAddsInfo>? =null
-        var position1 : Int? = null
-        val houseserverlist : HouseAddsInfo? = position1?.let { houseList2?.get(it) }
-        loadhousedetailsfromserver(houseserverlist)
+        //val houseList2: List<HouseAddsInfo>? =null
+        //var position1 : Int? = null
+        //val houseserverlist : HouseAddsInfo? = position1?.let { houseList2?.get(it) }
+        loadhousedetailsfromserver()
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment     // Google Maps
@@ -69,7 +66,7 @@ class HouseDetails : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
-    fun loadhousedetailsfromserver(houseserverlist: HouseAddsInfo?) {
+    fun loadhousedetailsfromserver() { //houseserverlist: HouseAddsInfo?
 
         val houseList1 = intent.getParcelableExtra<HouseAddsInfo>("houseList1")
         if (houseList1 != null){
@@ -79,6 +76,7 @@ class HouseDetails : AppCompatActivity(), OnMapReadyCallback {
             val textViewdet : TextView = findViewById(R.id.HouseDetailstextall)
             val textsquaremetres : TextView = findViewById(R.id.SquareMetres)
             val textcostofrent : TextView = findViewById(R.id.CostOfRent)
+            val textcostofsale : TextView = findViewById(R.id.CostOfSale)
             val floornn : TextView = findViewById(R.id.Floor)
             val yearconstructed : TextView = findViewById(R.id.YearConstructed)
             val addressroadnum : TextView = findViewById(R.id.AddressRoad)
@@ -100,6 +98,7 @@ class HouseDetails : AppCompatActivity(), OnMapReadyCallback {
             //imageView.setImageResource(house.image)
             textsquaremetres.text=houseaddetails.squeredMetres.toString()
             textcostofrent.text=houseaddetails.costOfRent.toString()
+            textcostofsale.text=houseaddetails.costOfSale.toString()
             floornn.text=houseaddetails.floor
             yearconstructed.text=houseaddetails.yearConstructed.toString()
             addressroadnum.text=houseaddetails.addressRoadNum
@@ -136,7 +135,7 @@ class HouseDetails : AppCompatActivity(), OnMapReadyCallback {
 
 
 
-        var id: Int = 0
+    /*    var id: Int = 0
         var houseName: String? = null
         var housePlace: String? = null
         var squeredMetres: Double = 0.00
@@ -173,7 +172,7 @@ class HouseDetails : AppCompatActivity(), OnMapReadyCallback {
                     ", Kλιματισμός='" + airConditioning + '\'' +
                     ", Κοινόχρηστα (αν υπάρχουν μ.ο. κόστους)='" + costOfSharedExpenses + '\'' +
                     '}'
-        }
+        }*/
 
 
 

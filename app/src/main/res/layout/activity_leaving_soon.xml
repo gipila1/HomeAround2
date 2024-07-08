@@ -129,12 +129,36 @@
             app:layout_constraintTop_toBottomOf="@+id/InputOfSquareMetres" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/YearConstructed"
+            android:id="@+id/CostOfSale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/InputOfCostOfRent">
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/InputOfCostOfSale"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="32dp"
+            android:hint="Τιμή πώλησης"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:inputType="numberDecimal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/InputOfCostOfRent"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/YearConstructed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/InputOfCostOfSale">
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -150,7 +174,7 @@
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/InputOfCostOfRent" />
+            app:layout_constraintTop_toBottomOf="@+id/InputOfCostOfSale" />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -387,47 +411,51 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/InputOfCostOfSharedExpenses" />
-
-
-        <ImageView
-            android:id="@+id/imageview1"
-            android:layout_width="80dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/RentOrSell"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="36dp"
-            android:scaleType="fitXY"
-            android:src="@mipmap/ic_launcher"
+            android:layout_marginTop="32dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/InputOfHouseShortDescription">
 
-
-        </ImageView>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/imagesselection"
-            android:layout_width="186dp"
-            android:layout_height="98dp"
+            android:id="@+id/InputOfRentOrSell"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
             android:layout_marginTop="32dp"
-            android:hint="Εικόνες"
+            android:hint="Ενοικίαση ή Πώληση"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/InputOfHouseShortDescription" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/LeavingDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/InputOfRentOrSell">
 
-        <Button
-            android:id="@+id/selectimage"
-            android:layout_width="170dp"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/InputOfLeavingDate"
+            android:layout_width="match_parent"
             android:layout_height="54dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="54dp"
-            android:layout_marginEnd="18dp"
-            android:clickable="true"
-            android:text="Επιλογή Εικόνας"
-            android:textColorHighlight="#77C137"
+            android:layout_marginTop="32dp"
+            android:hint="Ημ. Αποχώρησης  (ΗΗ/ΜΜ/ΕΕΕΕ ή Άμεσα)"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/imagesselection"
-            app:layout_constraintTop_toBottomOf="@+id/InputOfHouseShortDescription" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/InputOfRentOrSell" />
+
 
         <Button
             android:id="@+id/SavingDetailsButton"
@@ -443,7 +471,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imagesselection" />
+            app:layout_constraintTop_toBottomOf="@+id/InputOfLeavingDate" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

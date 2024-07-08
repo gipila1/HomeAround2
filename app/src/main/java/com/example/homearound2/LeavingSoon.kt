@@ -1,21 +1,15 @@
 package com.example.homearound2
 
-import android.app.Activity
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.homearound2.databinding.ActivityMainBinding
+import com.example.homearound2.rentmodel.HouseAddsInfo
+import com.example.homearound2.retrofit.HouseAddsInfojavaAPI
 import com.example.homearound2.retrofit.RetrofitService
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
-import com.example.homearound2.rentmodel.HouseAddsInfo
-import com.example.homearound2.retrofit.HouseAddsInfoAPI
-import com.example.homearound2.retrofit.HouseAddsInfojavaAPI
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -88,8 +82,9 @@ class LeavingSoon : AppCompatActivity() {
          val inputofplacen : TextView= findViewById<TextInputEditText>(com.example.homearound2.R.id.InputOfPlace)
          val inputofsquaremetresn : TextView= findViewById<TextInputEditText>(com.example.homearound2.R.id.InputOfSquareMetres)
          val inputofcostofrentn : TextView= findViewById<TextInputEditText>(com.example.homearound2.R.id.InputOfCostOfRent)
+         val inputofcostofsalen : TextView= findViewById<TextInputEditText>(com.example.homearound2.R.id.InputOfCostOfSale)
          val inputofyearconstructedn  : TextView= findViewById<TextInputEditText>(com.example.homearound2.R.id.InputOfYearConstructed)
-         val inputofaddressaoadn : TextView= findViewById<TextInputEditText>(com.example.homearound2.R.id.InputOfAddressRoad)
+         val inputofaddressaroadn : TextView= findViewById<TextInputEditText>(com.example.homearound2.R.id.InputOfAddressRoad)
          val inputofpostalcoden : TextView= findViewById<TextInputEditText>(com.example.homearound2.R.id.InputOfPostalCode)
          val inputoffloorn : TextView= findViewById<TextInputEditText>(com.example.homearound2.R.id.InputOfFloor)
          val inputofbedroomsn : TextView= findViewById<TextInputEditText>(com.example.homearound2.R.id.InputOfBedrooms)
@@ -99,6 +94,8 @@ class LeavingSoon : AppCompatActivity() {
          val inputofairconditioningn : TextView= findViewById<TextInputEditText>(com.example.homearound2.R.id.InputOfAirConditioning)
          val inputofcostofsharedexpensesn : TextView= findViewById<TextInputEditText>(com.example.homearound2.R.id.InputOfCostOfSharedExpenses)
          val inputofhouseshortdescriptionn : TextView= findViewById<TextInputEditText>(com.example.homearound2.R.id.InputOfHouseShortDescription)
+         val inputofrentorsell : TextView= findViewById<TextInputEditText>(com.example.homearound2.R.id.InputOfRentOrSell)
+         val inputofleavingdaten : TextView= findViewById<TextInputEditText>(com.example.homearound2.R.id.InputOfLeavingDate)
          val savingdetailsbutton : TextView= findViewById<MaterialButton>(com.example.homearound2.R.id.SavingDetailsButton)
 
 
@@ -112,8 +109,9 @@ class LeavingSoon : AppCompatActivity() {
             val housePlace = inputofplacen.text.toString()
             val squeredMetres = inputofsquaremetresn.text.toString()
             val costOfRent = inputofcostofrentn.text.toString()
+            val costOfSale = inputofcostofsalen.text.toString()
             val yearConstructed = inputofyearconstructedn.text.toString()
-            val addressRoadNum = inputofaddressaoadn.text.toString()
+            val addressRoadNum = inputofaddressaroadn.text.toString()
             val postalCode = inputofpostalcoden.text.toString()
             val floor = inputoffloorn.text.toString()
             val bedrooms= inputofbedroomsn.text.toString()
@@ -123,6 +121,8 @@ class LeavingSoon : AppCompatActivity() {
             val airConditioning = inputofairconditioningn.text.toString()
             val costOfSharedExpenses = inputofcostofsharedexpensesn.text.toString()
             val houseDetails = inputofhouseshortdescriptionn.text.toString()
+            val rentOrSell = inputofrentorsell.text.toString()
+            val dateleaving = inputofleavingdaten.text.toString()
              //val image1 = image11.toString()   //to check
 
 
@@ -132,6 +132,7 @@ class LeavingSoon : AppCompatActivity() {
              houseaddsInfo.sethousePlace(housePlace)
              houseaddsInfo.setsqueredMetres(squeredMetres.toDouble())
              houseaddsInfo.setcostOfRent(costOfRent.toInt())
+             houseaddsInfo.setcostOfSale(costOfSale.toInt())
              houseaddsInfo.setyearConstructed(yearConstructed.toInt())
              houseaddsInfo.setaddressRoadNum(addressRoadNum)
              houseaddsInfo.setpostalCode(postalCode.toInt())
@@ -143,6 +144,8 @@ class LeavingSoon : AppCompatActivity() {
              houseaddsInfo.setairConditioning(airConditioning)
              houseaddsInfo.setcostOfSharedExpenses(costOfSharedExpenses.toDouble())
              houseaddsInfo.sethouseDetails(houseDetails)
+             houseaddsInfo.setrentOrSell(rentOrSell)
+             houseaddsInfo.setdateleaving(dateleaving)
              //houseaddsInfo.setimages(image1.toInt())
 
 

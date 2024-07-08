@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         var buttonWantToRent: Button = binding.WantToRent
-        var buttonWantToBuy: Button = binding.WantToBuy
+        //var buttonWantToBuy: Button = binding.WantToBuy
         var buttonLeavingSoon = binding.LeavingSoon
-        var buttonSelling: Button = binding.Selling
+        //var buttonSelling: Button = binding.Selling
         var buttonRegistration: Button = binding.RegistrationButton
         var textWelcomeText: TextView = binding.WelcomeText
         var image: ImageView = binding.imageView2

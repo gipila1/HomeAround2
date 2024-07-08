@@ -30,19 +30,22 @@ public interface HouseAddsInfojavaAPI {
     @GET("/houseaddsinfo/get-all")
     Call<List<HouseAddsInfo>> getallHouses();
 
-    //@GET("/houseaddsinfo/getfromsearch?housePlace= ")
+    //@GET("/houseaddsinfo/getfromsearch")
     //Call<List<HouseAddsInfo>> getallfromfilter(@Query("housePlace") String housePlace);
+
+
 
     @GET("/houseaddsinfo/get-housedetails")
     Call<HouseAddsInfo> gethouseDetails();  //get only one
 
     @POST("/houseaddsinfo/save")  //Api.php?apicall=images
+    Call<HouseAddsInfo> save(@Body HouseAddsInfo houseaddsInfo);
     //fun uploadImage(
     //        @retrofit2.http.Part image: MultipartBody.Part, //which is right? Multipart.Part or retrofit2.http.Part
     //        @retrofit2.http.Part("desc")desc:RequestBody
     //): Call<HouseAddsInfo>
     //@NotNull Object upload(@NotNull String image1);
-    Call<HouseAddsInfo> save(@Body HouseAddsInfo houseaddsInfo);
+
 
 
 
